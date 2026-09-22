@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Passive Small Flying Object Detection — reduced-order wake-pressure modeling and machine learning research package.">
+<title>Research Models Lab · Passive UAV Detection</title>
+<style>
+:root{
+  --bg:#07111f; --panel:#0d1b2d; --panel2:#10233a; --text:#edf4ff;
+  --muted:#9fb0c7; --line:#20354d; --accent:#69d7ff; --accent2:#8b7cff;
+  --good:#73e0ae; --warn:#ffd27a; --max:1120px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#163657 0,#07111f 38%,#050c16 100%);
+color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}.wrap{max-width:var(--max);margin:auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-weight:800;letter-spacing:.2px}.brand span{color:var(--accent)}
+.badge{font-size:12px;border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--muted)}
+.hero{padding:64px 0 50px;text-align:center}
+.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+h1{font-size:clamp(34px,6vw,66px);line-height:1.03;margin:16px auto 20px;max-width:950px}
+.lead{font-size:19px;color:var(--muted);max-width:850px;margin:auto}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.btn{display:inline-block;text-decoration:none;padding:13px 19px;border-radius:11px;font-weight:750;border:1px solid var(--line)}
+.primary{background:var(--accent);color:#03101a;border-color:var(--accent)}
+.secondary{background:#0b1727}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:25px 0 75px}
+.stat,.card{background:linear-gradient(145deg,rgba(17,37,59,.92),rgba(9,23,39,.92));border:1px solid var(--line);border-radius:18px;padding:22px}
+.stat strong{display:block;font-size:31px;color:var(--good);margin-bottom:4px}.stat span{color:var(--muted);font-size:14px}
+section{padding:35px 0 65px} h2{font-size:32px;margin:0 0 10px}.section-lead{color:var(--muted);max-width:800px}
+.note{border-left:3px solid var(--warn);background:rgba(255,210,122,.06);padding:18px 20px;border-radius:0 12px 12px 0;margin-top:25px;color:#d8e2ef}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.card h3{margin:0;font-size:14px;letter-spacing:.1em;color:var(--accent)}.price{font-size:38px;font-weight:850;margin:7px 0 12px}
+.card p{color:var(--muted)}.card ul{padding-left:20px;color:#dbe6f4}.featured{border-color:#5a7cff;box-shadow:0 0 0 1px rgba(90,124,255,.15)}
+.files{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.file{background:#091727;border:1px solid var(--line);padding:13px 15px;border-radius:10px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px}
+.buy{background:linear-gradient(145deg,#0e2035,#091524);border:1px solid #2a4764;border-radius:22px;padding:30px;margin-top:25px}
+.address{word-break:break-all;background:#050d17;border:1px dashed #35536f;padding:16px;border-radius:12px;font-family:ui-monospace,monospace;font-size:14px;margin:15px 0}
+.copy{cursor:pointer;background:#17304b;color:white;border:1px solid #315777;border-radius:9px;padding:10px 14px;font-weight:700}
+ol{padding-left:23px}.telegram{color:var(--accent);font-weight:750}
+details{border-bottom:1px solid var(--line);padding:18px 0}summary{cursor:pointer;font-weight:700}details p{color:var(--muted);margin-bottom:0}
+footer{border-top:1px solid var(--line);padding:28px 0 45px;color:var(--muted);font-size:14px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.packages,.files{grid-template-columns:1fr}.hero{padding-top:35px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.wrap{padding:0 16px}h1{font-size:39px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand">Research Models <span>Lab</span></div>
+  <div class="badge">Independent Research Packages</div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Passive UAV Detection · Research Package</div>
+  <h1>Passive Small Flying Object Detection</h1>
+  <p class="lead">Reduced-order wake-pressure modeling &amp; machine learning for multirotors, fixed-wing drones, birds, and ambient clutter — fully reproducible, honestly benchmarked, and requiring no CFD solver.</p>
+  <div class="actions">
+    <a class="btn primary" href="#packages">Choose a package</a>
+    <a class="btn secondary" href="https://t.me/ResearchModelsLab_bot" target="_blank" rel="noopener">Ask before buying</a>
+  </div>
+</header>
+
+<div class="grid">
+  <div class="stat"><strong>90.6%</strong><span>Fused-sensor detection accuracy at moderate wind</span></div>
+  <div class="stat"><strong>73.9%</strong><span>Single-sensor detection accuracy at moderate wind</span></div>
+  <div class="stat"><strong>68.9%</strong><span>3-class accuracy: multirotor / fixed-wing / bird</span></div>
+  <div class="stat"><strong>0</strong><span>CFD solvers required — runs in minutes on a laptop</span></div>
+</div>
+
+<section>
+<h2>What this is</h2>
+<p class="section-lead">A proof-of-concept research framework using a physically motivated reduced-order model combining a Rankine vortex, pulse-train blade signature, and Dryden atmospheric turbulence.</p>
+<div class="note"><strong>Important scope:</strong> This is not a field-validated detection system and not a full 3D CFD solve. Full CFD is identified in the paper as the necessary next step; it is not included in this package.</div>
+</section>
+
+<section id="packages">
+<h2>Choose your package</h2>
+<p class="section-lead">Select the level of material you need. Custom adaptations are scoped individually.</p>
+<div class="packages">
+  <article class="card">
+    <h3>BASIC</h3><div class="price">$69</div>
+    <p>For readers who want the paper and the complete simulation/ML code.</p>
+    <ul><li>English paper</li><li>Full Python simulation/ML script</li><li>Reproducible reduced-order pipeline</li></ul>
+    <a class="btn secondary" href="#buy">Buy BASIC</a>
+  </article>
+  <article class="card featured">
+    <h3>COMPLETE</h3><div class="price">$150</div>
+    <p>Everything needed to inspect, reproduce, and study the complete research package.</p>
+    <ul><li>English + Persian papers</li><li>Full simulation code</li><li>Raw results JSON</li><li>Both figures</li><li>README with review corrections</li></ul>
+    <a class="btn primary" href="#buy">Buy COMPLETE</a>
+  </article>
+  <article class="card">
+    <h3>CUSTOM</h3><div class="price">from $250</div>
+    <p>Adaptation to your own sensor geometry, object classes, or environment.</p>
+    <ul><li>Individual scope</li><li>Research-oriented adaptation</li><li>Discuss requirements on Telegram</li></ul>
+    <a class="btn secondary" href="https://t.me/ResearchModelsLab_bot" target="_blank" rel="noopener">Discuss custom work</a>
+  </article>
+</div>
+</section>
+
+<section>
+<h2>What's in the Complete package</h2>
+<div class="files">
+  <div class="file">Detection_EN.docx — English paper</div>
+  <div class="file">Detection_FA.docx — Persian paper</div>
+  <div class="file">wake_pressure_sim_v2.py — simulation + ML pipeline</div>
+  <div class="file">results_v2.json — raw numerical results</div>
+  <div class="file">fig_signatures_v2.png — regenerated figure</div>
+  <div class="file">fig_snr_sweep_v2.png — regenerated figure</div>
+  <div class="file">README.md — review corrections</div>
+</div>
+</section>
+
+<section id="buy">
+<h2>How to buy</h2>
+<div class="buy">
+<ol>
+<li>Send <strong>69 USDT</strong> (BASIC), <strong>150 USDT</strong> (COMPLETE), or an agreed custom amount via <strong>USDT on BEP-20</strong>.</li>
+<li>Send the transaction hash or BscScan/Etherscan link to our <a class="telegram" href="https://t.me/ResearchModelsLab_bot" target="_blank" rel="noopener">Telegram bot</a>. Mention <strong>“UAV Detection”</strong> and your package.</li>
+<li>After on-chain verification, the bot replies with your download link. Typical processing time: up to 15 minutes.</li>
+</ol>
+<div class="address" id="wallet">0x2F55dF3Bf6deA1e114EC3B8e87930e899379628A</div>
+<button class="copy" onclick="copyAddress()">Copy wallet address</button>
+<a class="btn secondary" style="margin-left:8px" href="https://link.trustwallet.com/send?coin=20000714&address=0x2F55dF3Bf6deA1e114EC3B8e87930e899379628A&token_id=0x55d398326f99059fF775485246999027B3197955" target="_blank" rel="noopener">Pay with Trust Wallet</a>
+<p style="color:var(--muted)">Use any wallet supporting USDT on the BNB Smart Chain (BEP-20). Always verify the network and address before sending.</p>
+</div>
+</section>
+
+<section>
+<h2>Frequently asked questions</h2>
+<details><summary>Is this a validated, deployable detection system?</summary><p>No. It is a proof-of-concept research framework and should not be represented as field-validated or deployment-ready.</p></details>
+<details><summary>What corrections were made during review?</summary><p>The Complete package includes a README documenting the two corrections applied during review.</p></details>
+<details><summary>Why is 3-class accuracy only 68.9%?</summary><p>The result is reported as obtained rather than presented as a guarantee. The three classes are multirotor, fixed-wing, and bird under the modeled conditions.</p></details>
+<details><summary>Do I need CFD software?</summary><p>No. The supplied model is reduced-order and uses Python libraries such as NumPy, SciPy, and scikit-learn. Full CFD is discussed as a next research step.</p></details>
+<details><summary>Is this suitable for a graduate thesis or publication?</summary><p>The materials can be used as a research starting point, subject to your institution's rules, your own analysis, and appropriate citation. No publication or thesis outcome is guaranteed.</p></details>
+</section>
+
+<footer>
+Research Models Lab — independent research packages across multiple fields.<br>
+Payment accepted in USDT (BEP-20) only. Questions: <a class="telegram" href="https://t.me/ResearchModelsLab_bot" target="_blank" rel="noopener">@ResearchModelsLab_bot</a>
+</footer>
+</div>
+<script>
+function copyAddress(){
+ const a=document.getElementById('wallet').textContent.trim();
+ navigator.clipboard.writeText(a).then(()=>{event.target.textContent='Address copied';setTimeout(()=>event.target.textContent='Copy wallet address',1800)})
+}
+</script>
+</body>
+</html>
