@@ -1,0 +1,237 @@
+<title>Pressure Signature Data Packs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: single-column datasheet. Hero, four packs in a grid, contents table, scope box, order panel. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --fg:#14202b; --muted:#52606d; --line:#d5dce3;
+  --accent:#0b6e72; --accent-fg:#ffffff; --signal:#c2410c; --warn-bg:#fff4e5; --warn-line:#e8b66b;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e161d; --surface:#162029; --fg:#e6edf3; --muted:#9aa9b6; --line:#2a3743;
+  --accent:#4fc3c7; --accent-fg:#06262a; --signal:#ff9a62; --warn-bg:#2a2112; --warn-line:#7a5a22; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e161d; --surface:#162029; --fg:#e6edf3; --muted:#9aa9b6; --line:#2a3743;
+  --accent:#4fc3c7; --accent-fg:#06262a; --signal:#ff9a62; --warn-bg:#2a2112; --warn-line:#7a5a22; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:56px;padding-block:40px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(30px,5vw,50px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:26px;font-weight:700}
+h3{font-size:19px;font-weight:700}
+p{margin:0}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:62ch}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:18px;min-width:0}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font:600 15px var(--body);padding:11px 20px;border-radius:6px;text-decoration:none;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.plot{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.plot svg{width:100%;height:auto;display:block}
+.plot .cap{font:400 12px var(--mono);color:var(--muted);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.pack{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.pack.best{border-color:var(--accent);border-width:2px}
+.tag{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.price{font:700 30px var(--display)}
+.price small{font:400 13px var(--mono);color:var(--muted);margin-left:6px}
+.pack ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;display:flex;flex-direction:column;gap:4px}
+.pack .btn{margin-top:auto;text-align:center}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td code{font:400 13px var(--mono)}
+.scope{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.scope ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.sec{display:flex;flex-direction:column;gap:18px}
+.order{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.order textarea{width:100%;font:400 14px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:12px;min-height:84px;resize:vertical}
+.paylist{display:flex;flex-direction:column;gap:10px}
+.pay{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.pay b{font:500 13px var(--mono)}
+.pay code{font:400 13px var(--mono);overflow-wrap:anywhere;flex:1;min-width:0}
+.note{font-size:14px;color:var(--muted)}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin-top:8px;max-width:70ch}
+footer{font:400 12px var(--mono);color:var(--muted)}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.wrap{gap:44px}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Research data and code</span>
+    <h1>Pressure signatures of a spinning quadcopter, ready to analyze</h1>
+    <p class="lead">Probe time series from three transient OpenFOAM runs, the analysis scripts, and a reduced-order model with a machine-learning pipeline. Everything behind a paper on passive drone detection from air-pressure fluctuations.</p>
+    <div class="btnrow"><a class="btn" href="#packs">See the packs</a><a class="btn ghost" href="#scope">What this is and is not</a></div>
+  </div>
+  <div class="plot" aria-label="Schematic of the three blade-passage frequencies">
+    <svg viewBox="0 0 360 180" role="img" aria-labelledby="pt">
+      <title id="pt">Three spectral lines at 79.6, 111.4 and 159.2 hertz</title>
+      <line x1="30" y1="150" x2="345" y2="150" stroke="var(--line)" stroke-width="1.5"/>
+      <g stroke="var(--accent)" stroke-width="3" stroke-linecap="round">
+        <line x1="78" y1="150" x2="78" y2="70"/><line x1="152" y1="150" x2="152" y2="48"/><line x1="258" y1="150" x2="258" y2="26"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--fg)" text-anchor="middle">
+        <text x="78" y="166">79.6 Hz</text><text x="152" y="166">111.4 Hz</text><text x="258" y="166">159.2 Hz</text>
+        <text x="78" y="60" fill="var(--muted)">250 rad/s</text><text x="152" y="38" fill="var(--muted)">350 rad/s</text><text x="258" y="16" fill="var(--muted)">500 rad/s</text>
+      </g>
+    </svg>
+    <p class="cap">Blade-passage frequency = 2&omega;/2&pi;. Line heights are schematic.</p>
+  </div>
+</header>
+
+<section class="sec" id="packs">
+  <span class="eyebrow">Packs</span>
+  <h2>Choose what you need</h2>
+  <div class="grid">
+    <article class="pack">
+      <span class="tag">Data</span>
+      <h3>CFD Data Pack</h3>
+      <div class="price" data-price="data">$100<small>one-time</small></div>
+      <ul>
+        <li>Probe pressure, 8 probes, 3 speeds (CSV)</li>
+        <li>Force history at 500 rad/s</li>
+        <li>Spectral feature tables</li>
+        <li>Probe positions and run settings</li>
+      </ul>
+      <button class="btn" data-pack="CFD Data Pack">Order</button>
+    </article>
+    <article class="pack">
+      <span class="tag">Code</span>
+      <h3>ROM + ML Code Pack</h3>
+      <div class="price" data-price="code">$100<small>one-time</small></div>
+      <ul>
+        <li>Reduced-order model, Dryden wind, sensor faults</li>
+        <li>Classifier pipeline with fixed seed</li>
+        <li>Audit version: baseline, balanced accuracy, 5-fold CV</li>
+        <li>Saved results and run log</li>
+      </ul>
+      <button class="btn" data-pack="ROM + ML Code Pack">Order</button>
+    </article>
+    <article class="pack">
+      <span class="tag">Figures</span>
+      <h3>Figures + Manuscript</h3>
+      <div class="price" data-price="fig">$50<small>one-time</small></div>
+      <ul>
+        <li>Spectra, time series, force plots, SNR sweep</li>
+        <li>Paper in English and Persian (Word)</li>
+        <li>Short motion clip of the concept</li>
+      </ul>
+      <button class="btn" data-pack="Figures + Manuscript">Order</button>
+    </article>
+    <article class="pack best">
+      <span class="tag">Everything</span>
+      <h3>Full Bundle</h3>
+      <div class="price" data-price="all">$200<small>one-time</small></div>
+      <ul>
+        <li>All three packs above</li>
+        <li>Analysis scripts for single-run and three-speed comparison</li>
+        <li>Free updates to the files while the paper is revised</li>
+      </ul>
+      <button class="btn" data-pack="Full Bundle">Order</button>
+    </article>
+  </div>
+  <p class="note">Need a custom analysis, another rotor speed, or help with an OpenFOAM sliding-mesh setup? Ask for a quote in the order box below.</p>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Contents</span>
+  <h2>What is inside</h2>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Pack</th><th>File</th><th>What it holds</th></tr></thead>
+      <tbody>
+        <tr><td>Data</td><td><code>pressure_probes_w250 / w350 / w500.csv</code></td><td>Merged probe pressure p/&rho; in m&sup2;/s&sup2;, columns t_s, p0 to p7</td></tr>
+        <tr><td>Data</td><td><code>forces_w500.csv</code></td><td>Total force on the quadcopter patch (&rho; = 1.2 kg/m&sup3;)</td></tr>
+        <tr><td>Data</td><td><code>features_3class_equalwindow.csv</code>, <code>features_w500_detail.csv</code></td><td>Spectral features per probe and speed, equal window of 0.0359 s</td></tr>
+        <tr><td>Code</td><td><code>wake_pressure_sim_v2.py</code></td><td>Rankine-vortex pulse-train model, three sensors, 2 s at 2000 Hz</td></tr>
+        <tr><td>Code</td><td><code>wake_pressure_sim_v2_with_audit.py</code>, <code>audit_run_log.txt</code>, <code>results_v2.json</code></td><td>Majority baseline, balanced accuracy, cross-validation, feature importance</td></tr>
+        <tr><td>Code</td><td><code>analyze_single_run.py</code>, <code>compare_three_speeds.py</code></td><td>Resampling, detrend, Hann window, zero-padded FFT, peak interpolation</td></tr>
+        <tr><td>Figures</td><td><code>spectra_3class.png</code>, <code>spectra_w500_detail.png</code>, <code>timeseries_w500.png</code>, <code>forces_w500.png</code>, <code>fig_signatures_v2.png</code>, <code>fig_snr_sweep_v2.png</code></td><td>Plots used in the paper</td></tr>
+        <tr><td>Figures</td><td>Paper (EN, FA), concept clip</td><td>Final manuscript without author names, MP4 clip</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="scope" id="scope">
+  <h2>Read this before buying</h2>
+  <ul>
+    <li>One CFD run per rotor speed, so three independent runs. It is enough to check the blade-passage frequency, not to train a classifier.</li>
+    <li>The CFD is laminar, uses 648,014 cells and has no grid-independence study. Treat pressure amplitudes as indicative only.</li>
+    <li>Probes sit in the body frame, so a flying object passing a fixed ground sensor is not reproduced.</li>
+    <li>Machine-learning results come from simulated ROM data only. The single pressure sensor did not beat the 75% baseline; the fused result of 90.6% accuracy needs an added acoustic channel.</li>
+    <li>No field measurements. This is concept-stage research, not a detector.</li>
+  </ul>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Questions</span>
+  <h2>FAQ</h2>
+  <div>
+    <details><summary>What format are the files?</summary><p>CSV for data, Python 3 for code (NumPy, SciPy, scikit-learn), PNG for figures, Word for the paper, MP4 for the clip. Output paths in the scripts are hard-coded; change them before running.</p></details>
+    <details><summary>Can I use this in my own paper or product?</summary><p>You may use it for research, teaching and internal development. Please cite the paper. Reselling or republishing the files is not included.</p></details>
+    <details><summary>Will the data change?</summary><p>The paper is still being revised. Full Bundle buyers receive corrected files if any number changes.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Because files are delivered digitally, refunds are handled case by case. Ask before you pay if you are unsure the files fit your work.</p></details>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <span class="eyebrow">Order</span>
+  <h2>Place an order</h2>
+  <p>Pick a pack above and your request appears here. Copy it and send it to the seller; you will get payment details and the files after payment is confirmed.</p>
+  <textarea id="req" aria-label="Order request" readonly>Pack: (choose above)
+Name:
+Use: research / teaching / commercial
+Notes:</textarea>
+  <div class="btnrow"><button class="btn" id="copy">Copy request</button><span class="note" id="copied" role="status"></span></div>
+  <div>
+    <h3>Pay in USD</h3>
+    <div class="paylist" id="paylist"></div>
+  </div>
+</section>
+
+<footer>Research files provided as is, without warranty. Prices are set by the seller and shown in US dollars.</footer>
+</div>
+
+<script>
+/* Seller config: add real payment methods here. Leave empty until they exist. */
+var PAYMENTS = [
+  /* { label: "USDT (TRC20)", value: "wallet address" },
+     { label: "Payment link", value: "https://..." } */
+];
+(function(){
+  var req=document.getElementById('req'), copied=document.getElementById('copied');
+  function setPack(n){req.value='Pack: '+n+'\nName:\nUse: research / teaching / commercial\nNotes:';}
+  document.querySelectorAll('[data-pack]').forEach(function(b){
+    b.addEventListener('click',function(){setPack(b.getAttribute('data-pack'));document.getElementById('order').scrollIntoView({behavior:'smooth'});});
+  });
+  function copy(text,done){
+    function fallback(){req.removeAttribute('readonly');req.select();try{document.execCommand('copy');}catch(e){}req.setAttribute('readonly','');done();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback);}else{fallback();}
+  }
+  document.getElementById('copy').addEventListener('click',function(){copy(req.value,function(){copied.textContent='Copied';setTimeout(function(){copied.textContent='';},2000);});});
+  var list=document.getElementById('paylist');
+  if(!PAYMENTS.length){
+    var p=document.createElement('p');p.className='note';p.textContent='Payment options are being set up. Send your request to the seller and ask for the current USD payment method.';list.appendChild(p);
+  }else{
+    PAYMENTS.forEach(function(m){
+      var d=document.createElement('div');d.className='pay';
+      var b=document.createElement('b');b.textContent=m.label;
+      var c=document.createElement('code');c.textContent=m.value;
+      var k=document.createElement('button');k.className='btn ghost';k.textContent='Copy';
+      k.addEventListener('click',function(){if(navigator.clipboard){navigator.clipboard.writeText(m.value).catch(function(){});}});
+      d.appendChild(b);d.appendChild(c);d.appendChild(k);list.appendChild(d);
+    });
+  }
+})();
+</script>
